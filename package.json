@@ -4,14 +4,15 @@
   "description": "Back de la gestion de hoteles",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DesarrolloAppDistribuidas/Backend.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ash Kuraine",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DesarrolloAppDistribuidas/Backend/issues"
