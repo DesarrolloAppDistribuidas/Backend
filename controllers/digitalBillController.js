@@ -1,5 +1,6 @@
 const DigitalBill = require("../models/DigitalBill");
 const bcrypt = require("bcrypt");
+const { last } = require("lodash");
 
 
 exports.createDigitalBill = async (req, res) => {
@@ -57,7 +58,7 @@ exports.getLastDigitalBillByEmail = async (req, res) => {
             res.status(404).json({ msg: 'DigitalBill does not exist' })
         }
        
-        res.json(digitalBill[0]);
+        res.json(digitalBill[digitalBill.length-1]);
         
     } catch (error) {
         console.log(error);

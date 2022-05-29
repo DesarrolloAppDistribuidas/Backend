@@ -7,5 +7,5 @@ const digitalBillController = require('../controllers/digitalBillController');
 router.post('/', digitalBillController.createDigitalBill);
 router.get('/', digitalBillController.getDigitalBills);
 router.get('/email/:email', digitalBillController.getDigitalBillByEmail);
-router.get('/email/:email', digitalBillController.getLastDigitalBillByEmail);
+router.get('/email/last/:email', digitalBillController.getLastDigitalBillByEmail);
 module.exports = router;    
