@@ -35,7 +35,7 @@ exports.getDigitalBills = async (req, res) => {
 exports.getDigitalBillByEmail = async (req, res) => {
 
     try {
-        let digitalBill = await DigitalBill.find({email: req.params.email});
+        let digitalBill = await DigitalBill.find({email: req.params.email}).sort({created_date: -1 });
 
         if(!digitalBill) {
             res.status(404).json({ msg: 'DigitalBill does not exist' })
@@ -52,13 +52,13 @@ exports.getDigitalBillByEmail = async (req, res) => {
 exports.getLastDigitalBillByEmail = async (req, res) => {
 
     try {
-        let digitalBill = await DigitalBill.find({email: req.params.email});
+        let digitalBill = await DigitalBill.find({email: req.params.email}).sort({created_date: -1 });
 
         if(!digitalBill) {
             res.status(404).json({ msg: 'DigitalBill does not exist' })
         }
        
-        res.json(digitalBill[digitalBill.length-1]);
+        res.json(digitalBill[0]);
         
     } catch (error) {
         console.log(error);
