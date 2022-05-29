@@ -57,7 +57,7 @@ exports.getLastDigitalBillByEmail = async (req, res) => {
             res.status(404).json({ msg: 'DigitalBill does not exist' })
         }
        
-        res.json(digitalBill);
+        res.json(digitalBill[0]);
         
     } catch (error) {
         console.log(error);
