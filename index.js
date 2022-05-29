@@ -22,6 +22,7 @@ mongoose.connect(process.env.MONGODB).then(() => {
 //routes
 app.use('/api/users', require('./routes/user'));
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/digitalBills', require('./routes/digitalBill'));
 
 app.listen(port, () => {
     console.log('listening on port: ', port)
