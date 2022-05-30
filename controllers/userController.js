@@ -6,10 +6,17 @@ exports.createUser = async (req, res) => {
 
     try {
         let user;
+        let emailc;
         // User creation
         user = new User(req.body);
+        emailc = emailc = await User.findOne({ email: req.body.email });
         user.password = await User.encryptPassword(user.password);
         user.card_number = await User.encryptCardNumber(user.card_number);
+
+        if(emailc) {
+            res.status(401).json({ msg: 'Email is already registered papu' })
+        }
+
         await user.save();
         res.send(user);
         
