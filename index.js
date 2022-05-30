@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const bcrypt = require('bcrypt')
+const NodeRSA = require('node-rsa')
 const cors = require('cors')
 require('dotenv').config()
 

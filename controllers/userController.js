@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
-
+const NodeRSA = require('node-rsa');
 
 exports.createUser = async (req, res) => {
 
@@ -9,6 +9,7 @@ exports.createUser = async (req, res) => {
         // User creation
         user = new User(req.body);
         user.password = await User.encryptPassword(user.password);
+        user.card_number = await User.encryptCardNumber(user.card_number);
         await user.save();
         res.send(user);
         
@@ -35,7 +36,7 @@ exports.getUsers = async (req, res) => {
 exports.updateUser = async (req, res) => {
 
     try {
-        const { dni, name, lastname_p, lastname_m, email, password, phone, status, created_date, updated_date } = req.body;
+        const { dni, name, lastname_p, lastname_m, email, password, phone, card_number, status, created_date, updated_date } = req.body;
         let user = await User.findById(req.params.id);
 
         if(!user) {
@@ -49,6 +50,7 @@ exports.updateUser = async (req, res) => {
         user.email = email;
         user.password = await User.encryptPassword(password);
         user.phone = phone;
+        user.card_number = await User.encryptCardNumber(card_number);
         user.status = status;
         user.created_date = created_date;
         user.updated_date = updated_date;
@@ -65,7 +67,7 @@ exports.updateUser = async (req, res) => {
 exports.updateUserByDni = async (req, res) => {
 
     try {
-        const { dni, name, lastname_p, lastname_m, email, password, phone, status, created_date, updated_date } = req.body;
+        const { dni, name, lastname_p, lastname_m, email, password, phone, card_number, status, created_date, updated_date } = req.body;
         let user = await User.findOne({dni: req.params.dni});
 
         if(!user) {
@@ -79,6 +81,7 @@ exports.updateUserByDni = async (req, res) => {
         user.email = email;
         user.password = await User.encryptPassword(password);
         user.phone = phone;
+        user.card_number = await User.encryptCardNumber(card_number);
         user.status = status;
         user.created_date = created_date;
         user.updated_date = updated_date;
@@ -95,7 +98,7 @@ exports.updateUserByDni = async (req, res) => {
 exports.updateUserByEmail = async (req, res) => {
 
     try {
-        const { dni, name, lastname_p, lastname_m, email, password, phone, status, created_date, updated_date } = req.body;
+        const { dni, name, lastname_p, lastname_m, email, password, phone, card_number, status, created_date, updated_date } = req.body;
         let user = await User.findOne({dni: req.params.email});
 
         if(!user) {
@@ -109,6 +112,7 @@ exports.updateUserByEmail = async (req, res) => {
         user.email = email;
         user.password = await User.encryptPassword(password);
         user.phone = phone;
+        user.card_number = await User.encryptCardNumber(card_number);
         user.status = status;
         user.created_date = created_date;
         user.updated_date = updated_date;
