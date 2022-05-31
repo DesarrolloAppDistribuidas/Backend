@@ -15,10 +15,10 @@ exports.createUser = async (req, res) => {
 
         if(emailc) {
             res.status(401).json({ msg: 'Email is already registered papu' })
+        }else{
+            await user.save();
+            res.send(user);
         }
-
-        await user.save();
-        res.send(user);
         
     } catch (error) {
         console.log(error);
