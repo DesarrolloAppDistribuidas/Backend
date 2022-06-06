@@ -8,4 +8,4 @@ router.post('/', digitalBillController.createDigitalBill);
 router.get('/', digitalBillController.getDigitalBills);
 router.get('/email/:email', digitalBillController.getDigitalBillByEmail);
 router.get('/email/last/:email', digitalBillController.getLastDigitalBillByEmail);
-module.exports = router;    
+module.exports = router;

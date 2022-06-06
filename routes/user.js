@@ -15,4 +15,4 @@ router.put('/email/:email', userController.updateUserByEmail);
 router.delete('/:id', userController.deleteUser);
 router.delete('/dni/:dni', userController.deleteUserByDni);
 router.delete('/email/:email', userController.deleteUserByEmail);
-module.exports = router;    
+module.exports = router;

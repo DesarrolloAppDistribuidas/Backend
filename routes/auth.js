@@ -5,4 +5,4 @@ const authController = require('../controllers/authController');
  
 // api/users
 router.get('/login', authController.login);
-module.exports = router;   
+module.exports = router;

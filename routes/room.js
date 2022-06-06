@@ -8,4 +8,4 @@ router.post('/', roomController.createRoom);
 router.get('/', roomController.getRooms);
 router.get('/:id', roomController.getRoom);
 router.get('/idroom/:id_room', roomController.getRoomByIdRoom);
-module.exports = router;    
+module.exports = router;

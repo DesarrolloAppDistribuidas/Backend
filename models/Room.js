@@ -8,6 +8,10 @@ const RoomSchema = mongoose.Schema({
     type: {
         type: String,
         required: true
+    },
+    charge: {
+        type: Number,
+        required: true
     }
 });
 
