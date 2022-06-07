@@ -1,16 +1,24 @@
 const Reservation = require("../models/Reservation");
+const Room = require("../models/Room");
 
 exports.createReservation = async (req, res) => {
 
     try {
         let reservation;
+        let room = await Room.findOne({id_room: req.params.id_room});
+
+        if(!room) {
+            res.status(404).json({ msg: 'Room does not exist' })
+        }
+       
+        res.json(room);
         // Reservation creation
         reservation = new Reservation(req.body);
         let date1 = reservation.date_in;
         let date2 = reservation.date_out;
         let tiempo = date2.getTime() - date1.getTime();
         let tiempot = tiempo/1000*60*60*24;
-        reservation.payment = tiempot*(reservation.number_adults+reservation.number_children*0.6);
+        reservation.payment = tiempot*(reservation.number_adults+reservation.number_children*0.6)*room.charge;
         await reservation.save();
         res.send(reservation);
         
