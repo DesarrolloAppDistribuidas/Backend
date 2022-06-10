@@ -5,9 +5,6 @@ exports.createReservation = async (req, res) => {
 
     try {
         let reservation;
-        /*if(!room) {
-            res.status(404).json({ msg: 'Room does not exist' })
-        }*/
         
         // Reservation creation
         reservation = new Reservation(req.body);
