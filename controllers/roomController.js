@@ -62,3 +62,20 @@ exports.getRoomByIdRoom = async (req, res) => {
         res.status(500).send('Error');
     }
 }
+
+exports.getRoomByType = async (req, res) => {
+
+    try {
+        let room = await Room.find({type: req.params.type});
+
+        if(!room) {
+            res.status(404).json({ msg: 'Room does not exist' })
+        }
+       
+        res.json(room);
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error');
+    }
+}
