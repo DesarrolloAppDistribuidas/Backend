@@ -9,7 +9,7 @@ exports.createUser = async (req, res) => {
         let emailc;
         // User creation
         user = new User(req.body);
-        emailc = emailc = await User.findOne({ email: req.body.email });
+        emailc = await User.findOne({ email: req.body.email });
         user.password = await User.encryptPassword(user.password);
         user.card_number = await User.encryptCardNumber(user.card_number);
 
